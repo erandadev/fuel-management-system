@@ -1,0 +1,64 @@
+<nav
+  class="navbar bg-dark navbar-expand-lg"
+  data-bs-theme="dark"
+  style="position: fixed; top: 0; left: 0; width: 100vw"
+>
+  <div class="container">
+    <a class="navbar-brand" href="#">FMS</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      style="display: flex; flex-direction: row; justify-content: space-between"
+    >
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'fuel_records' %}">Summary</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'create_fuel_invoice' %}"
+            >Create Invoice</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'upload_file' %}"
+            >Upload Breakdown</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'invoice_list' %}">Invoice Status</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'change_fuel_records' %}"
+            >Update Status</a
+          >
+        </li>
+      </ul>
+
+      {% if user.is_authenticated %}
+      <div style="color: #fff; text-transform: capitalize">
+        Hi
+        <strong>{{ user.get_username }}</strong>
+      </div>
+
+      <li class="nav-item">
+        <a href="{% url 'logout' %}" class="btn btn-outline-danger">Logout</a>
+      </li>
+      {% endif %}
+    </div>
+  </div>
+</nav>
